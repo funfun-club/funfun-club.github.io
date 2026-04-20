@@ -18,12 +18,42 @@ Just one, for now: a **public-facing homepage (広報ページ)** that links out
 
 | File | What it's for |
 |---|---|
+| `index.html` | 公開サイトの本体（GitHub Pages で配信） |
 | `colors_and_type.css` | Core tokens — colors, gradients, type stacks, spacing, shadows |
-| `assets/` | Logo marks, placeholder illustrations, icons |
+| `assets/` | Logo marks, placeholder illustrations, icons, マーク SVG（音符・コード括弧など） |
 | `fonts/` | Any self-hosted font files (currently empty — using Google Fonts CDN) |
 | `preview/` | Design-system cards shown in the Design System tab |
 | `ui_kits/website/` | React component recreations of the public website |
+| `.nojekyll` | GitHub Pages の Jekyll を無効化（`_` 始まりの `preview/_base.css` を配信するため） |
 | `SKILL.md` | Skill manifest for cross-project reuse |
+
+## 公開サイト (`index.html`)
+
+GitHub Pages で `https://funfun-club.github.io/` にそのまま配信される 1 ページ構成。
+
+**セクション構成（上から順）**
+
+1. **Nav** — ロゴ + ページ内リンク（近況報告 / 動画 / メンバー / SNS）。720px 以下でハンバーガーメニューに切り替わる（CSS のみ、JS 不要）
+2. **Hero** — グラデーション背景 + 大見出し + WATCH NOW CTA + 「絶賛鋭意作成中（まだデモサイト）」ステッカー。装飾マークは音符と `</>` コード括弧
+3. **News (`#news`)** — 近況報告リスト（日付 + タイトル + 本文）
+4. **Videos (`#videos`)** — YouTube 動画カードグリッド 4 枚（プレースホルダ）
+5. **Members (`#members`)** — メンバー紹介 2 枚（MEMBER 01 実況担当 / MEMBER 02 解説担当 — 写真・紹介文はプレースホルダ）
+6. **SNS (`#sns`)** — YouTube / X / Instagram / TikTok のリンクカード
+7. **Footer** — ロゴ + コピーライト
+
+**差し替え予定の TODO**
+
+- 各 SNS の実アカウント URL とハンドル名（現在は `@placeholder`）
+- 動画カードのサムネイル・タイトル・エピソード情報
+- メンバーの写真・名前・紹介文（`MEMBER A` / `MEMBER B` プレースホルダ）
+- 近況報告の実コンテンツ
+
+## ローカル確認
+
+```sh
+python3 -m http.server 8765
+# → http://localhost:8765/
+```
 
 ---
 
