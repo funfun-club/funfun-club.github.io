@@ -1,6 +1,6 @@
 ﻿# 面白い活動 — Design System
 
-> **Omoshiroi Katsudou** — a 2-person YouTube / SNS creator duo inspired by long-form travel variety shows (e.g. *水曜どうでしょう*), with side content of everyday小ネタ. This site is the hub of their activity.
+> **Omoshiroi Katsudou** — a 2-person YouTube / SNS creator duo inspired by long-form travel variety shows , with side content of everyday小ネタ. This site is the hub of their activity.
 
 ---
 
