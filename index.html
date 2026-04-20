@@ -32,11 +32,34 @@
   .nav-logo-name { font-family: var(--font-display); font-size: 22px; line-height: 1; }
   .nav-logo-sub { font-family: var(--font-pixel); font-size: 9px; letter-spacing: 0.2em; color: var(--fg3); }
   .nav-spacer { flex: 1; }
+  .nav-menu { display: flex; align-items: center; gap: 24px; }
   .nav-link {
     font-family: var(--font-pixel); font-size: 11px; letter-spacing: 0.15em;
     color: var(--ink); text-decoration: none; padding: 6px 4px;
   }
   .nav-link:hover { background: var(--yellow); color: var(--ink); }
+  .nav-toggle { display: none; }
+  .nav-burger {
+    display: none;
+    width: 40px; height: 40px;
+    cursor: pointer;
+    border: 2px solid var(--ink);
+    border-radius: 6px;
+    background: var(--paper);
+    box-shadow: 2px 2px 0 var(--ink);
+    position: relative;
+  }
+  .nav-burger span {
+    position: absolute; left: 8px; right: 8px; height: 2px;
+    background: var(--ink);
+    transition: transform 200ms, opacity 150ms, top 200ms;
+  }
+  .nav-burger span:nth-child(1) { top: 11px; }
+  .nav-burger span:nth-child(2) { top: 18px; }
+  .nav-burger span:nth-child(3) { top: 25px; }
+  .nav-toggle:checked + .nav-burger span:nth-child(1) { top: 18px; transform: rotate(45deg); }
+  .nav-toggle:checked + .nav-burger span:nth-child(2) { opacity: 0; }
+  .nav-toggle:checked + .nav-burger span:nth-child(3) { top: 18px; transform: rotate(-45deg); }
 
   /* ---------- HERO ---------- */
   .hero {
@@ -192,8 +215,20 @@
 
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 720px) {
-    .nav-inner { padding: 12px 20px; gap: 14px; flex-wrap: wrap; }
-    .nav-link { font-size: 10px; }
+    .nav-inner { padding: 12px 20px; gap: 14px; position: relative; }
+    .nav-burger { display: block; }
+    .nav-menu {
+      position: absolute; top: 100%; right: 0; left: 0;
+      flex-direction: column; align-items: stretch; gap: 0;
+      background: var(--paper);
+      border-bottom: 2px solid var(--ink);
+      box-shadow: 0 3px 0 var(--magenta);
+      padding: 8px 20px 16px;
+      display: none;
+    }
+    .nav-toggle:checked ~ .nav-menu { display: flex; }
+    .nav-menu .nav-link { font-size: 13px; padding: 12px 4px; border-bottom: 1px dashed var(--fg3); }
+    .nav-menu .nav-link:last-child { border-bottom: none; }
     .hero-inner { padding: 64px 24px 80px; }
     .hero-title { font-size: 72px; text-shadow: var(--text-stroke-ink), 5px 5px 0 var(--ink); }
     .hero-lead { font-size: 18px; }
@@ -217,9 +252,13 @@
       </div>
     </a>
     <div class="nav-spacer"></div>
-    <a href="#videos" class="nav-link">動画 / VIDEOS</a>
-    <a href="#sns" class="nav-link">SNS</a>
-    <a href="#about" class="nav-link">ABOUT</a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="nav-burger" aria-label="メニュー"><span></span><span></span><span></span></label>
+    <div class="nav-menu">
+      <a href="#videos" class="nav-link">動画 / VIDEOS</a>
+      <a href="#sns" class="nav-link">SNS</a>
+      <a href="#about" class="nav-link">ABOUT</a>
+    </div>
   </div>
 </nav>
 
