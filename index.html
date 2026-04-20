@@ -32,24 +32,34 @@
   .nav-logo-name { font-family: var(--font-display); font-size: 22px; line-height: 1; }
   .nav-logo-sub { font-family: var(--font-pixel); font-size: 9px; letter-spacing: 0.2em; color: var(--fg3); }
   .nav-spacer { flex: 1; }
+  .nav-menu { display: flex; align-items: center; gap: 24px; }
   .nav-link {
     font-family: var(--font-pixel); font-size: 11px; letter-spacing: 0.15em;
     color: var(--ink); text-decoration: none; padding: 6px 4px;
   }
   .nav-link:hover { background: var(--yellow); color: var(--ink); }
-  .nav-cta {
-    font-family: var(--font-display); font-size: 14px;
-    background: var(--magenta); color: #fff;
-    text-shadow: var(--text-stroke-ink);
-    padding: 10px 18px; border: 2px solid var(--ink); border-radius: 8px;
-    box-shadow: 3px 3px 0 var(--ink);
-    text-decoration: none; transform: skew(-6deg);
-    display: inline-block;
-    transition: transform 120ms cubic-bezier(.2,.9,.3,1.2), box-shadow 120ms cubic-bezier(.2,.9,.3,1.2), background 120ms;
+  .nav-toggle { display: none; }
+  .nav-burger {
+    display: none;
+    width: 40px; height: 40px;
+    cursor: pointer;
+    border: 2px solid var(--ink);
+    border-radius: 6px;
+    background: var(--paper);
+    box-shadow: 2px 2px 0 var(--ink);
+    position: relative;
   }
-  .nav-cta > span { display: inline-block; transform: skew(6deg); }
-  .nav-cta:hover { transform: skew(-6deg) translate(-2px, -2px); box-shadow: 5px 5px 0 var(--ink); background: var(--magenta); color: #fff; }
-  .nav-cta:active { transform: skew(-6deg) translate(3px, 3px); box-shadow: 0 0 0 var(--ink); }
+  .nav-burger span {
+    position: absolute; left: 8px; right: 8px; height: 2px;
+    background: var(--ink);
+    transition: transform 200ms, opacity 150ms, top 200ms;
+  }
+  .nav-burger span:nth-child(1) { top: 11px; }
+  .nav-burger span:nth-child(2) { top: 18px; }
+  .nav-burger span:nth-child(3) { top: 25px; }
+  .nav-toggle:checked + .nav-burger span:nth-child(1) { top: 18px; transform: rotate(45deg); }
+  .nav-toggle:checked + .nav-burger span:nth-child(2) { opacity: 0; }
+  .nav-toggle:checked + .nav-burger span:nth-child(3) { top: 18px; transform: rotate(-45deg); }
 
   /* ---------- HERO ---------- */
   .hero {
@@ -91,15 +101,56 @@
   .hero-cta > span { display: inline-block; transform: skew(6deg); }
   .hero-cta:hover { transform: skew(-6deg) translate(-3px, -3px); box-shadow: 9px 9px 0 var(--ink); background: var(--yellow); color: var(--ink); }
   .hero-cta:active { transform: skew(-6deg) translate(4px, 4px); box-shadow: 0 0 0 var(--ink); }
-  .hero-live {
-    font-family: var(--font-pixel); font-size: 11px; letter-spacing: 0.2em;
-    color: var(--cyan);
+  .hero-wip {
+    display: inline-block;
+    margin-top: 28px;
+    font-family: var(--font-display); font-size: 14px; line-height: 1;
+    background: var(--yellow); color: var(--ink);
+    padding: 8px 14px;
+    border: 2px solid var(--ink); border-radius: 6px;
+    box-shadow: 3px 3px 0 var(--ink);
+    transform: rotate(-3deg);
   }
-  .hero-live::before {
-    content: "● "; color: var(--red);
-    animation: pulse 1.6s ease-in-out infinite;
+  .hero-wip-sub {
+    font-family: var(--font-pixel); font-size: 10px; letter-spacing: 0.12em;
+    color: var(--fg2); margin-left: 6px;
   }
-  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+
+  /* ---------- NEWS ---------- */
+  .news {
+    background: var(--paper);
+    padding: 80px 0;
+    border-bottom: 3px solid var(--ink);
+  }
+  .news-inner { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+  .news-head { margin-bottom: 40px; }
+  .news-kicker { font-family: var(--font-pixel); font-size: 12px; letter-spacing: 0.3em; color: var(--magenta); margin-bottom: 8px; }
+  .news-title {
+    font-family: var(--font-display); font-size: 56px; margin: 0; line-height: 1;
+    color: var(--ink); text-shadow: 3px 3px 0 var(--yellow);
+  }
+  .news-list { display: flex; flex-direction: column; gap: 20px; }
+  .news-item {
+    background: var(--paper);
+    border: 2px solid var(--ink); border-radius: 12px;
+    box-shadow: 6px 6px 0 var(--magenta);
+    padding: 20px 24px;
+    display: grid; grid-template-columns: 120px 1fr; gap: 24px; align-items: baseline;
+  }
+  .news-date {
+    font-family: var(--font-pixel); font-size: 11px; letter-spacing: 0.18em;
+    color: var(--violet);
+    border-right: 2px dashed var(--fg3);
+    padding-right: 12px;
+  }
+  .news-body-title {
+    font-family: var(--font-display); font-size: 22px; margin: 0 0 8px;
+    color: var(--ink); line-height: 1.2;
+  }
+  .news-body-text {
+    font-family: var(--font-sans); font-size: 14px; line-height: 1.7;
+    color: var(--fg2); margin: 0;
+  }
 
   /* ---------- VIDEOS ---------- */
   .videos {
@@ -151,6 +202,58 @@
   .video-body { padding: 14px 16px; }
   .video-date { font-family: var(--font-pixel); font-size: 10px; letter-spacing: 0.2em; color: var(--fg3); margin-bottom: 6px; }
   .video-title { font-family: var(--font-display); font-size: 22px; margin: 0; line-height: 1.15; }
+
+  /* ---------- MEMBERS ---------- */
+  .members {
+    background: var(--paper);
+    padding: 80px 0;
+    border-bottom: 3px solid var(--ink);
+  }
+  .members-inner { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+  .members-head { display: flex; align-items: flex-end; gap: 20px; margin-bottom: 40px; }
+  .members-kicker { font-family: var(--font-pixel); font-size: 12px; letter-spacing: 0.3em; color: var(--violet); margin-bottom: 8px; }
+  .members-title {
+    font-family: var(--font-display); font-size: 56px; margin: 0; line-height: 1;
+    color: var(--ink); text-shadow: 3px 3px 0 var(--cyan);
+  }
+  .members-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; }
+  .member-card {
+    background: var(--paper); border: 2px solid var(--ink); border-radius: 14px;
+    box-shadow: 8px 8px 0 var(--violet);
+    padding: 28px 24px 24px;
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    transition: transform 160ms cubic-bezier(.2,.9,.3,1.2), box-shadow 160ms cubic-bezier(.2,.9,.3,1.2);
+  }
+  .member-card:hover { transform: translate(-3px, -3px); box-shadow: 11px 11px 0 var(--violet); }
+  .member-avatar {
+    width: 140px; height: 140px; border-radius: 50%;
+    border: 3px solid var(--ink);
+    background: var(--grad-hero);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px;
+    box-shadow: 4px 4px 0 var(--ink);
+    overflow: hidden;
+  }
+  .member-avatar img { width: 70%; height: 70%; object-fit: contain; }
+  .member-badge {
+    font-family: var(--font-pixel); font-size: 10px; letter-spacing: 0.25em;
+    background: var(--violet); color: #fff;
+    padding: 4px 10px; border-radius: 3px;
+    margin-bottom: 10px;
+  }
+  .member-role {
+    font-family: var(--font-display); font-size: 26px; line-height: 1.1;
+    color: var(--ink); margin: 0 0 6px;
+    text-shadow: 2px 2px 0 var(--magenta);
+  }
+  .member-name {
+    font-family: var(--font-pixel); font-size: 11px; letter-spacing: 0.2em;
+    color: var(--fg3); margin-bottom: 14px;
+  }
+  .member-bio {
+    font-family: var(--font-sans); font-size: 14px; line-height: 1.7;
+    color: var(--fg2); margin: 0;
+  }
 
   /* ---------- SNS ---------- */
   .sns {
@@ -214,8 +317,20 @@
 
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 720px) {
-    .nav-inner { padding: 12px 20px; gap: 14px; flex-wrap: wrap; }
-    .nav-link { font-size: 10px; }
+    .nav-inner { padding: 12px 20px; gap: 14px; position: relative; }
+    .nav-burger { display: block; }
+    .nav-menu {
+      position: absolute; top: 100%; right: 0; left: 0;
+      flex-direction: column; align-items: stretch; gap: 0;
+      background: var(--paper);
+      border-bottom: 2px solid var(--ink);
+      box-shadow: 0 3px 0 var(--magenta);
+      padding: 8px 20px 16px;
+      display: none;
+    }
+    .nav-toggle:checked ~ .nav-menu { display: flex; }
+    .nav-menu .nav-link { font-size: 13px; padding: 12px 4px; border-bottom: 1px dashed var(--fg3); }
+    .nav-menu .nav-link:last-child { border-bottom: none; }
     .hero-inner { padding: 64px 24px 80px; }
     .hero-title { font-size: 72px; text-shadow: var(--text-stroke-ink), 5px 5px 0 var(--ink); }
     .hero-lead { font-size: 18px; }
@@ -239,21 +354,22 @@
       </div>
     </a>
     <div class="nav-spacer"></div>
-    <a href="#videos" class="nav-link">動画 / VIDEOS</a>
-    <a href="#sns" class="nav-link">SNS</a>
-    <a href="#about" class="nav-link">ABOUT</a>
-    <!-- TODO: 実際の YouTube チャンネル URL に差し替え -->
-    <a href="https://youtube.com/@omoshiroi" target="_blank" rel="noopener" class="nav-cta">
-      <span>SUBSCRIBE ▶</span>
-    </a>
+    <input type="checkbox" id="nav-toggle" class="nav-toggle">
+    <label for="nav-toggle" class="nav-burger" aria-label="メニュー"><span></span><span></span><span></span></label>
+    <div class="nav-menu">
+      <a href="#news" class="nav-link">近況報告</a>
+      <a href="#videos" class="nav-link">動画 / VIDEOS</a>
+      <a href="#members" class="nav-link">メンバー</a>
+      <a href="#sns" class="nav-link">SNS</a>
+    </div>
   </div>
 </nav>
 
 <!-- ========== HERO ========== -->
 <section class="hero">
   <div class="hero-grain"></div>
-  <img src="assets/marks/burst.svg" class="hero-burst-1" alt="" aria-hidden="true">
-  <img src="assets/marks/burst.svg" class="hero-burst-2" alt="" aria-hidden="true">
+  <img src="assets/marks/note.svg" class="hero-burst-1" alt="" aria-hidden="true">
+  <img src="assets/marks/brackets.svg" class="hero-burst-2" alt="" aria-hidden="true">
   <div class="hero-inner">
     <div class="hero-kicker">〜 ADVENTURE VARIETY UNIT 〜</div>
     <h1 class="hero-title">面白い活動</h1>
@@ -263,7 +379,41 @@
     </p>
     <div class="hero-ctas">
       <a href="#videos" class="hero-cta"><span>WATCH NOW ▶</span></a>
-      <div class="hero-live">LIVE · 毎週金曜更新</div>
+    </div>
+    <div class="hero-wip">絶賛鋭意作成中<span class="hero-wip-sub">（まだでもサイト）</span></div>
+  </div>
+</section>
+
+<!-- ========== NEWS ========== -->
+<!-- TODO: 実際の告知・近況に差し替え。新しい項目は上に追加 -->
+<section id="news" class="news">
+  <div class="news-inner">
+    <div class="news-head">
+      <div class="news-kicker">〜 NEWS 〜</div>
+      <h2 class="news-title">近況報告</h2>
+    </div>
+    <div class="news-list">
+      <article class="news-item">
+        <div class="news-date">2026.04.19</div>
+        <div class="news-body">
+          <h3 class="news-body-title">公式サイトをオープンしました</h3>
+          <p class="news-body-text">面白い活動の公式ハブサイトを公開しました。今後はこちらで最新動画・SNS 更新・活動の近況をまとめてお知らせします。</p>
+        </div>
+      </article>
+      <article class="news-item">
+        <div class="news-date">2026.04.12</div>
+        <div class="news-body">
+          <h3 class="news-body-title">新作「沖縄・那覇の裏通り」公開</h3>
+          <p class="news-body-text">EP.004 を YouTube にアップしました。二人で現地のディープスポットを歩き回った回です。コメントお待ちしてます。</p>
+        </div>
+      </article>
+      <article class="news-item">
+        <div class="news-date">2026.04.01</div>
+        <div class="news-body">
+          <h3 class="news-body-title">毎週金曜更新を継続中</h3>
+          <p class="news-body-text">今月も毎週金曜 21:00 に新作を公開予定です。スケジュールが変わる場合は SNS でお知らせします。</p>
+        </div>
+      </article>
     </div>
   </div>
 </section>
@@ -275,7 +425,7 @@
     <div class="videos-head">
       <img src="assets/marks/telop-ribbon.svg" alt="" aria-hidden="true">
       <div class="videos-head-spacer"></div>
-      <a href="https://youtube.com/@omoshiroi" target="_blank" rel="noopener" class="all-videos">ALL VIDEOS →</a>
+      <a href="https://www.youtube.com/@面白い活動" target="_blank" rel="noopener" class="all-videos">ALL VIDEOS →</a>
     </div>
     <div class="video-grid">
       <a href="#" class="video-card video-card--feature">
@@ -326,6 +476,41 @@
   </div>
 </section>
 
+<!-- ========== MEMBERS ========== -->
+<!-- TODO: 各メンバーの実名/ニックネーム、顔写真、紹介文を実データに差し替え -->
+<section id="members" class="members">
+  <div class="members-inner">
+    <div class="members-head">
+      <div>
+        <div class="members-kicker">〜 MEMBERS 〜</div>
+        <h2 class="members-title">メンバー</h2>
+      </div>
+    </div>
+    <div class="members-grid">
+      <div class="member-card">
+        <div class="member-avatar"><img src="assets/logo-mark.svg" alt=""></div>
+        <div class="member-badge">MEMBER 01</div>
+        <h3 class="member-role">実況担当</h3>
+        <div class="member-name">メンバー A</div>
+        <p class="member-bio">
+          勢いとノリで突っ走る実況担当。旅先ではいつも先頭を歩いている。
+          細かいことは気にしないタイプで、現場の空気を最速で拾って叫ぶ役。
+        </p>
+      </div>
+      <div class="member-card">
+        <div class="member-avatar"><img src="assets/logo-mark.svg" alt=""></div>
+        <div class="member-badge">MEMBER 02</div>
+        <h3 class="member-role">解説担当</h3>
+        <div class="member-name">メンバー B</div>
+        <p class="member-bio">
+          一歩引いて状況を整理する解説担当。地図と時刻表をこよなく愛する。
+          メンバー A の暴走に一秒遅れでツッコミを入れるのが日課。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ========== SNS ========== -->
 <!-- TODO: 各 SNS の URL とハンドル名を実際のアカウントに差し替え -->
 <section id="sns" class="sns">
@@ -337,7 +522,7 @@
       <span class="accent">ください！！</span>
     </h2>
     <div class="sns-grid">
-      <a href="https://youtube.com/@omoshiroi" target="_blank" rel="noopener" class="sns-card">
+      <a href="https://www.youtube.com/@面白い活動" target="_blank" rel="noopener" class="sns-card">
         <div class="sns-icon sns-icon--youtube"><img src="assets/icons/social/youtube.svg" alt=""></div>
         <div class="sns-body">
           <div class="sns-name">YouTube</div>
@@ -376,7 +561,7 @@
 <!-- ========== FOOTER ========== -->
 <footer class="site-footer">
   <div class="footer-inner">
-    <img src="assets/marks/stamp.svg" class="footer-stamp" alt="" aria-hidden="true">
+    <img src="assets/logo-mark.svg" class="footer-stamp" alt="" aria-hidden="true">
     <div class="footer-brand">
       <div class="footer-brand-name">面白い活動</div>
       <div class="footer-brand-sub">OMOSHIROI KATSUDOU · SINCE 2026</div>
