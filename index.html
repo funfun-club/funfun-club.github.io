@@ -102,6 +102,42 @@
   .hero-cta:hover { transform: skew(-6deg) translate(-3px, -3px); box-shadow: 9px 9px 0 var(--ink); background: var(--yellow); color: var(--ink); }
   .hero-cta:active { transform: skew(-6deg) translate(4px, 4px); box-shadow: 0 0 0 var(--ink); }
 
+  /* ---------- NEWS ---------- */
+  .news {
+    background: var(--paper);
+    padding: 80px 0;
+    border-bottom: 3px solid var(--ink);
+  }
+  .news-inner { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+  .news-head { margin-bottom: 40px; }
+  .news-kicker { font-family: var(--font-pixel); font-size: 12px; letter-spacing: 0.3em; color: var(--magenta); margin-bottom: 8px; }
+  .news-title {
+    font-family: var(--font-display); font-size: 56px; margin: 0; line-height: 1;
+    color: var(--ink); text-shadow: 3px 3px 0 var(--yellow);
+  }
+  .news-list { display: flex; flex-direction: column; gap: 20px; }
+  .news-item {
+    background: var(--paper);
+    border: 2px solid var(--ink); border-radius: 12px;
+    box-shadow: 6px 6px 0 var(--magenta);
+    padding: 20px 24px;
+    display: grid; grid-template-columns: 120px 1fr; gap: 24px; align-items: baseline;
+  }
+  .news-date {
+    font-family: var(--font-pixel); font-size: 11px; letter-spacing: 0.18em;
+    color: var(--violet);
+    border-right: 2px dashed var(--fg3);
+    padding-right: 12px;
+  }
+  .news-body-title {
+    font-family: var(--font-display); font-size: 22px; margin: 0 0 8px;
+    color: var(--ink); line-height: 1.2;
+  }
+  .news-body-text {
+    font-family: var(--font-sans); font-size: 14px; line-height: 1.7;
+    color: var(--fg2); margin: 0;
+  }
+
   /* ---------- VIDEOS ---------- */
   .videos {
     background: var(--paper);
@@ -307,6 +343,7 @@
     <input type="checkbox" id="nav-toggle" class="nav-toggle">
     <label for="nav-toggle" class="nav-burger" aria-label="メニュー"><span></span><span></span><span></span></label>
     <div class="nav-menu">
+      <a href="#news" class="nav-link">近況報告</a>
       <a href="#videos" class="nav-link">動画 / VIDEOS</a>
       <a href="#members" class="nav-link">メンバー</a>
       <a href="#sns" class="nav-link">SNS</a>
@@ -328,6 +365,40 @@
     </p>
     <div class="hero-ctas">
       <a href="#videos" class="hero-cta"><span>WATCH NOW ▶</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== NEWS ========== -->
+<!-- TODO: 実際の告知・近況に差し替え。新しい項目は上に追加 -->
+<section id="news" class="news">
+  <div class="news-inner">
+    <div class="news-head">
+      <div class="news-kicker">〜 NEWS 〜</div>
+      <h2 class="news-title">近況報告</h2>
+    </div>
+    <div class="news-list">
+      <article class="news-item">
+        <div class="news-date">2026.04.19</div>
+        <div class="news-body">
+          <h3 class="news-body-title">公式サイトをオープンしました</h3>
+          <p class="news-body-text">面白い活動の公式ハブサイトを公開しました。今後はこちらで最新動画・SNS 更新・活動の近況をまとめてお知らせします。</p>
+        </div>
+      </article>
+      <article class="news-item">
+        <div class="news-date">2026.04.12</div>
+        <div class="news-body">
+          <h3 class="news-body-title">新作「沖縄・那覇の裏通り」公開</h3>
+          <p class="news-body-text">EP.004 を YouTube にアップしました。二人で現地のディープスポットを歩き回った回です。コメントお待ちしてます。</p>
+        </div>
+      </article>
+      <article class="news-item">
+        <div class="news-date">2026.04.01</div>
+        <div class="news-body">
+          <h3 class="news-body-title">毎週金曜更新を継続中</h3>
+          <p class="news-body-text">今月も毎週金曜 21:00 に新作を公開予定です。スケジュールが変わる場合は SNS でお知らせします。</p>
+        </div>
+      </article>
     </div>
   </div>
 </section>
