@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  
+  <defs>
+    <filter id="rough" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="3"></feTurbulence>
+      <feDisplacementMap in="SourceGraphic" scale="2"></feDisplacementMap>
+    </filter>
+  </defs>
+
+  
+  <circle cx="100" cy="100" r="88" stroke="#0E0B1F" stroke-width="6" fill="#F7F1E4" filter="url(#rough)"></circle>
+
+  
+  <text x="70" y="115" font-family="&#39;Reggae One&#39;, serif" font-size="96" fill="#22E8FF" text-anchor="middle" font-weight="400">面</text>
+  
+  <text x="125" y="135" font-family="&#39;Reggae One&#39;, serif" font-size="72" fill="#FF2E88" text-anchor="middle" font-weight="400" opacity="0.9">活</text>
+
+  
+  <g transform="translate(165 35)">
+    <polygon points="0,-14 3,-4 14,-4 5,3 8,14 0,8 -8,14 -5,3 -14,-4 -3,-4" fill="#FFD63A" stroke="#0E0B1F" stroke-width="2"></polygon>
+  </g>
+</svg>

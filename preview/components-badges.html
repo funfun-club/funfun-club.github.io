@@ -1,0 +1,18 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_base.css"><style>
+.badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--font-pixel);font-size:11px;letter-spacing:.15em;padding:5px 10px;border:2px solid var(--ink);border-radius:var(--r-pill);background:var(--paper);color:var(--ink)}
+.badge.hot{background:var(--magenta);color:#fff}
+.badge.cool{background:var(--cyan);color:var(--ink)}
+.badge.new{background:var(--yellow);color:var(--ink)}
+.badge.rec{background:var(--ink);color:#fff}
+.badge.rec::before{content:'●';color:var(--red);animation:rec 1.2s infinite}
+@keyframes rec{0%,50%{opacity:1}51%,100%{opacity:.2}}
+.badge.rough{background:var(--paper);border-style:dashed}
+</style></head><body><div class="card"><div class="row" style="gap:10px">
+<span class="badge hot">NEW !!</span>
+<span class="badge cool">#旅</span>
+<span class="badge new">NEXT EP</span>
+<span class="badge rec">REC</span>
+<span class="badge">EPISODE 001</span>
+<span class="badge rough">COMING SOON</span>
+<span class="badge" style="background:var(--violet);color:#fff">MEMBER 01</span>
+</div></div></body></html>

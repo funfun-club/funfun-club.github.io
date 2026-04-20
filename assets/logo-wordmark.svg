@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 140" fill="none">
+  
+  <defs>
+    <linearGradient id="wm-grad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9B4CFF"></stop>
+      <stop offset="0.5" stop-color="#FF2E88"></stop>
+      <stop offset="1" stop-color="#22E8FF"></stop>
+    </linearGradient>
+  </defs>
+
+  
+  <text x="16" y="90" font-family="&#39;Reggae One&#39;, serif" font-size="76" fill="#0E0B1F" font-weight="400">面白い活動</text>
+  
+  <text x="12" y="86" font-family="&#39;Reggae One&#39;, serif" font-size="76" fill="url(#wm-grad)" font-weight="400" stroke="#0E0B1F" stroke-width="2">面白い活動</text>
+
+  
+  <text x="14" y="118" font-family="&#39;DotGothic16&#39;, monospace" font-size="16" fill="#0E0B1F" letter-spacing="3">OMOSHIROI  KATSUDOU</text>
+</svg>

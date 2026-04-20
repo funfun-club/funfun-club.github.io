@@ -1,0 +1,18 @@
+@import url('../colors_and_type.css');
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--fg1);
+  font-family: var(--font-sans);
+  overflow: hidden;
+}
+.card {
+  padding: 20px 24px;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 100%;
+}
+.row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.col { display: flex; flex-direction: column; gap: 8px; }
