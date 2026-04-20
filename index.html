@@ -153,6 +153,58 @@
   .video-date { font-family: var(--font-pixel); font-size: 10px; letter-spacing: 0.2em; color: var(--fg3); margin-bottom: 6px; }
   .video-title { font-family: var(--font-display); font-size: 22px; margin: 0; line-height: 1.15; }
 
+  /* ---------- MEMBERS ---------- */
+  .members {
+    background: var(--paper);
+    padding: 80px 0;
+    border-bottom: 3px solid var(--ink);
+  }
+  .members-inner { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
+  .members-head { display: flex; align-items: flex-end; gap: 20px; margin-bottom: 40px; }
+  .members-kicker { font-family: var(--font-pixel); font-size: 12px; letter-spacing: 0.3em; color: var(--violet); margin-bottom: 8px; }
+  .members-title {
+    font-family: var(--font-display); font-size: 56px; margin: 0; line-height: 1;
+    color: var(--ink); text-shadow: 3px 3px 0 var(--cyan);
+  }
+  .members-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; }
+  .member-card {
+    background: var(--paper); border: 2px solid var(--ink); border-radius: 14px;
+    box-shadow: 8px 8px 0 var(--violet);
+    padding: 28px 24px 24px;
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+    transition: transform 160ms cubic-bezier(.2,.9,.3,1.2), box-shadow 160ms cubic-bezier(.2,.9,.3,1.2);
+  }
+  .member-card:hover { transform: translate(-3px, -3px); box-shadow: 11px 11px 0 var(--violet); }
+  .member-avatar {
+    width: 140px; height: 140px; border-radius: 50%;
+    border: 3px solid var(--ink);
+    background: var(--grad-hero);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 16px;
+    box-shadow: 4px 4px 0 var(--ink);
+    overflow: hidden;
+  }
+  .member-avatar img { width: 70%; height: 70%; object-fit: contain; }
+  .member-badge {
+    font-family: var(--font-pixel); font-size: 10px; letter-spacing: 0.25em;
+    background: var(--violet); color: #fff;
+    padding: 4px 10px; border-radius: 3px;
+    margin-bottom: 10px;
+  }
+  .member-role {
+    font-family: var(--font-display); font-size: 26px; line-height: 1.1;
+    color: var(--ink); margin: 0 0 6px;
+    text-shadow: 2px 2px 0 var(--magenta);
+  }
+  .member-name {
+    font-family: var(--font-pixel); font-size: 11px; letter-spacing: 0.2em;
+    color: var(--fg3); margin-bottom: 14px;
+  }
+  .member-bio {
+    font-family: var(--font-sans); font-size: 14px; line-height: 1.7;
+    color: var(--fg2); margin: 0;
+  }
+
   /* ---------- SNS ---------- */
   .sns {
     background: var(--ink); color: var(--paper);
@@ -257,7 +309,7 @@
     <div class="nav-menu">
       <a href="#videos" class="nav-link">動画 / VIDEOS</a>
       <a href="#sns" class="nav-link">SNS</a>
-      <a href="#about" class="nav-link">ABOUT</a>
+      <a href="#members" class="nav-link">メンバー</a>
     </div>
   </div>
 </nav>
@@ -334,6 +386,41 @@
           <h3 class="video-title">とりあえず、北海道</h3>
         </div>
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== MEMBERS ========== -->
+<!-- TODO: 各メンバーの実名/ニックネーム、顔写真、紹介文を実データに差し替え -->
+<section id="members" class="members">
+  <div class="members-inner">
+    <div class="members-head">
+      <div>
+        <div class="members-kicker">〜 MEMBERS 〜</div>
+        <h2 class="members-title">メンバー</h2>
+      </div>
+    </div>
+    <div class="members-grid">
+      <div class="member-card">
+        <div class="member-avatar"><img src="assets/logo-mark.svg" alt=""></div>
+        <div class="member-badge">MEMBER 01</div>
+        <h3 class="member-role">実況担当</h3>
+        <div class="member-name">メンバー A</div>
+        <p class="member-bio">
+          勢いとノリで突っ走る実況担当。旅先ではいつも先頭を歩いている。
+          細かいことは気にしないタイプで、現場の空気を最速で拾って叫ぶ役。
+        </p>
+      </div>
+      <div class="member-card">
+        <div class="member-avatar"><img src="assets/logo-mark.svg" alt=""></div>
+        <div class="member-badge">MEMBER 02</div>
+        <h3 class="member-role">解説担当</h3>
+        <div class="member-name">メンバー B</div>
+        <p class="member-bio">
+          一歩引いて状況を整理する解説担当。地図と時刻表をこよなく愛する。
+          メンバー A の暴走に一秒遅れでツッコミを入れるのが日課。
+        </p>
+      </div>
     </div>
   </div>
 </section>
