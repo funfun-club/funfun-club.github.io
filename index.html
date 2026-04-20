@@ -78,15 +78,6 @@
   .hero-cta > span { display: inline-block; transform: skew(6deg); }
   .hero-cta:hover { transform: skew(-6deg) translate(-3px, -3px); box-shadow: 9px 9px 0 var(--ink); background: var(--yellow); color: var(--ink); }
   .hero-cta:active { transform: skew(-6deg) translate(4px, 4px); box-shadow: 0 0 0 var(--ink); }
-  .hero-live {
-    font-family: var(--font-pixel); font-size: 11px; letter-spacing: 0.2em;
-    color: var(--cyan);
-  }
-  .hero-live::before {
-    content: "● "; color: var(--red);
-    animation: pulse 1.6s ease-in-out infinite;
-  }
-  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
 
   /* ---------- VIDEOS ---------- */
   .videos {
@@ -246,7 +237,6 @@
     </p>
     <div class="hero-ctas">
       <a href="#videos" class="hero-cta"><span>WATCH NOW ▶</span></a>
-      <div class="hero-live">LIVE · 毎週金曜更新</div>
     </div>
   </div>
 </section>
