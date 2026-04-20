@@ -1,0 +1,212 @@
+@charset "UTF-8";
+/* =========================================================================
+   面白い活動 — Omoshiroi Katsudou
+   Core design tokens: colors + typography
+   ========================================================================= */
+
+/* ---------- Fonts ----------
+   SUBSTITUTED from Google Fonts — flag to user, swap for licensed files later:
+   - Yuji Syuku / Yuji Mai       → 筆文字 brush display
+   - Reggae One                  → thick outlined テロップ-style headline
+   - Zen Kaku Gothic New         → primary sans (JP + EN)
+   - DotGothic16                 → pixel / 8-bit accent (Heisei nostalgia)
+   - JetBrains Mono              → code / mono
+   --------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Yuji+Mai&family=Yuji+Syuku&family=Reggae+One&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=DotGothic16&family=JetBrains+Mono:wght@400;700&display=swap');
+
+:root {
+  /* ---------- PALETTE ----------
+     Heisei-retro × cyber-gradient. The system is a small set of saturated
+     accent colors sitting on either deep ink or cream paper. Gradients are
+     used sparingly, as テロップ-style ribbons and hero washes. */
+
+  /* Core ink / paper */
+  --ink:          #0E0B1F;   /* near-black with violet tint */
+  --ink-soft:     #1E1A38;   /* raised surface on dark */
+  --paper:        #F7F1E4;   /* warm off-white, VHS manual cream */
+  --paper-soft:   #EDE5D2;   /* raised surface on cream */
+  --rule:         #2B2548;   /* hairline on dark */
+  --rule-paper:   #1E0F2F;   /* hairline on cream (same as ink) */
+
+  /* Signal accents — loud, saturated, テロップ palette */
+  --magenta:      #FF2E88;   /* primary hot accent */
+  --cyan:         #22E8FF;   /* cool complement */
+  --violet:       #9B4CFF;   /* bridge between magenta and cyan */
+  --yellow:       #FFD63A;   /* highlight / warning-not-error */
+  --lime:         #B6FF3C;   /* accent success */
+  --orange:       #FF6A1F;   /* warm pop */
+  --red:          #FF2D2D;   /* NG / error */
+
+  /* Gradient recipes */
+  --grad-hero:    linear-gradient(135deg, #9B4CFF 0%, #FF2E88 45%, #22E8FF 100%);
+  --grad-ribbon:  linear-gradient(90deg, #FF2E88 0%, #9B4CFF 50%, #22E8FF 100%);
+  --grad-sunset:  linear-gradient(180deg, #FFD63A 0%, #FF6A1F 60%, #FF2E88 100%);
+  --grad-vhs:     linear-gradient(180deg, #0E0B1F 0%, #1E0F3D 50%, #3B0F4A 100%);
+
+  /* Semantic (functional) */
+  --fg1:          var(--ink);        /* primary text on paper */
+  --fg2:          #3A2E5A;           /* secondary text on paper */
+  --fg3:          #6B5E8A;           /* tertiary text on paper */
+  --fg1-dark:     var(--paper);      /* primary text on ink */
+  --fg2-dark:     #CDBEE8;           /* secondary on ink */
+  --fg3-dark:     #8678B0;           /* tertiary on ink */
+  --accent:       var(--magenta);
+  --accent-cool:  var(--cyan);
+  --link:         var(--magenta);
+  --link-visited: var(--violet);
+
+  /* ---------- TYPE STACKS ---------- */
+  --font-brush:    'Yuji Mai', 'Yuji Syuku', 'Klee One', serif;           /* 筆文字 */
+  --font-display:  'Reggae One', 'Yuji Mai', system-ui, sans-serif;        /* テロップ */
+  --font-sans:     'Zen Kaku Gothic New', -apple-system, BlinkMacSystemFont, 'Hiragino Kaku Gothic ProN', sans-serif;
+  --font-pixel:    'DotGothic16', 'Courier New', monospace;                /* 8-bit accent */
+  --font-mono:     'JetBrains Mono', 'SF Mono', Consolas, monospace;
+
+  /* ---------- SCALE ---------- */
+  --step--2: 0.75rem;    /* 12 — micro / caption */
+  --step--1: 0.875rem;   /* 14 — small */
+  --step-0:  1rem;       /* 16 — body */
+  --step-1:  1.125rem;   /* 18 — body lg */
+  --step-2:  1.375rem;   /* 22 — h4 */
+  --step-3:  1.75rem;    /* 28 — h3 */
+  --step-4:  2.5rem;     /* 40 — h2 */
+  --step-5:  3.75rem;    /* 60 — h1 */
+  --step-6:  5.5rem;     /* 88 — display */
+  --step-7:  8rem;       /* 128 — billboard */
+
+  /* ---------- SPACING ---------- */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --s-9: 96px;
+
+  /* ---------- RADII ----------
+     Mostly crisp. Small radii for cards, pill-radius for stamps/badges. */
+  --r-0: 0;
+  --r-1: 4px;
+  --r-2: 8px;
+  --r-3: 14px;
+  --r-pill: 999px;
+
+  /* ---------- ELEVATION ----------
+     Heisei graphics don't do soft Material shadows. They do HARD offset
+     drop-shadows — like printed テロップ. */
+  --shadow-hard:    4px 4px 0 var(--ink);
+  --shadow-hard-lg: 8px 8px 0 var(--ink);
+  --shadow-cyan:    4px 4px 0 var(--cyan);
+  --shadow-magenta: 4px 4px 0 var(--magenta);
+  --shadow-soft:    0 2px 0 rgba(14, 11, 31, 0.15);
+  --shadow-glow:    0 0 24px rgba(155, 76, 255, 0.5);
+
+  /* Outlined text (テロップ) */
+  --text-stroke-ink:  -2px -2px 0 var(--ink), 2px -2px 0 var(--ink), -2px 2px 0 var(--ink), 2px 2px 0 var(--ink), 0 -2px 0 var(--ink), 0 2px 0 var(--ink), -2px 0 0 var(--ink), 2px 0 0 var(--ink);
+  --text-stroke-white: -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff, 2px 2px 0 #fff, 0 -2px 0 #fff, 0 2px 0 #fff, -2px 0 0 #fff, 2px 0 0 #fff;
+}
+
+/* ==========================================================================
+   SEMANTIC ELEMENT STYLES
+   Use these directly; or compose via utility classes below.
+   ========================================================================== */
+
+html { font-family: var(--font-sans); color: var(--fg1); background: var(--paper); }
+
+h1, .h1 {
+  font-family: var(--font-display);
+  font-size: var(--step-5);
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  font-weight: 400;
+}
+
+h2, .h2 {
+  font-family: var(--font-display);
+  font-size: var(--step-4);
+  line-height: 1.1;
+  font-weight: 400;
+}
+
+h3, .h3 {
+  font-family: var(--font-sans);
+  font-size: var(--step-3);
+  line-height: 1.2;
+  font-weight: 900;
+}
+
+h4, .h4 {
+  font-family: var(--font-sans);
+  font-size: var(--step-2);
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+p, .body {
+  font-family: var(--font-sans);
+  font-size: var(--step-0);
+  line-height: 1.7;
+  font-weight: 400;
+  color: var(--fg1);
+  text-wrap: pretty;
+}
+
+.lead {
+  font-size: var(--step-1);
+  line-height: 1.65;
+  font-weight: 500;
+}
+
+.small, small {
+  font-size: var(--step--1);
+  line-height: 1.5;
+  color: var(--fg2);
+}
+
+.caption {
+  font-size: var(--step--2);
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-family: var(--font-pixel);
+  color: var(--fg3);
+}
+
+.brush {
+  font-family: var(--font-brush);
+  font-weight: 400;
+}
+
+.telop {
+  font-family: var(--font-display);
+  color: var(--yellow);
+  text-shadow: var(--text-stroke-ink);
+  letter-spacing: 0.02em;
+  transform: skew(-6deg);
+  display: inline-block;
+}
+
+.pixel {
+  font-family: var(--font-pixel);
+  letter-spacing: 0.05em;
+}
+
+code, kbd, pre, .mono {
+  font-family: var(--font-mono);
+  font-size: 0.95em;
+}
+
+a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  transition: color 120ms ease, background 120ms ease;
+}
+
+a:hover {
+  color: var(--ink);
+  background: var(--yellow);
+}
